@@ -6,5 +6,9 @@ This is a discord bot that returns a random English word
 * [requests](https://2.python-requests.org/en/master/user/install/#install)
 ## Setup
 To set the bot up, you need to create a bot on the Discord [developers page](https://discord.com/developers/applications). Copy the bot token from the bot page of your application, and replace the `TOKEN` at the end of the discordbot.py file.
+
 To install the requirements, install Python 3 first, and then use pip to install discord.py and requests. `python -m pip install -U discord.py requests` should do.
+
+To clone the repository, you need to do `git clone https://github.com/flugschwein/randomwordbot` to also get the long English word list you have to do `git submodule init` and `git submodule update`.
+
 Run the bot by using `python discordbot.py`.
