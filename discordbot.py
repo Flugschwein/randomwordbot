@@ -12,7 +12,7 @@ with open('english-words/words_alpha.txt', 'r') as words, open('blacklist.txt', 
     standard = 'short'
     maximum_words = 20
 
-bot = commands.Bot(command_prefix='!')
+bot = commands.Bot(command_prefix='$')
 
 
 @bot.command()
