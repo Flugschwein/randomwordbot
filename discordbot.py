@@ -1,7 +1,6 @@
 from discord.ext import commands
 import requests
 import random
-from pprint import pprint
 
 with open('english-words/words_alpha.txt', 'r') as words, open('blacklist.txt', 'r') as black:
     wordlist = requests.get('http://www-personal.umich.edu/~jlawler/wordlist')
@@ -11,6 +10,7 @@ with open('english-words/words_alpha.txt', 'r') as words, open('blacklist.txt', 
     }
     blacklist = set(map(str.rstrip, black.readlines()))
     standard = 'short'
+    maximum_words = 20
 
 bot = commands.Bot(command_prefix='!')
 
@@ -34,7 +34,7 @@ async def word(ctx, *words):
             except ValueError:
                 if arg in wordlists.keys():
                     chosen_list = arg
-        random_words = random.sample(wordlists[chosen_list] - blacklist, k=count)
+        random_words = random.sample(wordlists[chosen_list] - blacklist, k=min([count, maximum_words]))
         await ctx.send('\n'.join(random_words))
     else:
         await ctx.send(random.sample(wordlists[standard] - blacklist, 1)[0])
